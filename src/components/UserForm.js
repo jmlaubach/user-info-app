@@ -21,7 +21,12 @@ function UserForm(props) {
       age: +enteredAge,
     };
 
-    props.onSaveUserInfo(userData);
+    if (userData.username === "" || userData.age <= 0) {
+      props.onInvalidData();
+    } else {
+      props.onSaveUserInfo(userData);
+    }
+
     setEnteredUsername("");
     setEnteredAge("");
   };

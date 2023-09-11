@@ -8,21 +8,36 @@ const DUMMY_USERS = [];
 
 function App() {
   const [users, setUsers] = useState(DUMMY_USERS);
+  const [showInvalidModal, setShowInvalidModal] = useState(false);
+
+  const handleShowInvalidModal = () => {
+    setShowInvalidModal(false);
+  };
+
+  const cancelShowInvalidModal = () => {
+    setShowInvalidModal(true);
+  }
 
   const addUserHandler = (enteredUser) => {
     const userData = {
       ...enteredUser,
       id: Math.random().toString(),
     };
-    setUsers(prevUsers => {
+    setUsers((prevUsers) => {
       return [enteredUser, ...prevUsers];
     });
   };
 
   return (
     <div>
-      <UserForm onSaveUserInfo={addUserHandler} />
+      <UserForm
+        onSaveUserInfo={addUserHandler}
+        onInvalidData={handleShowInvalidModal}
+      />
       <UserList items={users} />
+      {!showInvalidModal && (
+        <InvalidInputModal cancelInvalidModal={cancelShowInvalidModal}/>
+      )}
     </div>
   );
 }
