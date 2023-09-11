@@ -1,0 +1,15 @@
+.user-background {
+    padding: 1rem;
+    max-width: 30rem;
+    margin: 2rem auto;
+    border-radius: 4px;
+    background: white;
+}
+
+.user-item {
+    font: inherit;
+    color: black;
+    font-size: 1rem;
+    flex: 1;
+    margin: 0;
+}
