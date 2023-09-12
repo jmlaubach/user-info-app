@@ -11,11 +11,11 @@ function App() {
   const [showInvalidModal, setShowInvalidModal] = useState(false);
 
   const handleShowInvalidModal = () => {
-    setShowInvalidModal(false);
+    setShowInvalidModal(true);
   };
 
   const cancelShowInvalidModal = () => {
-    setShowInvalidModal(true);
+    setShowInvalidModal(false);
   }
 
   const addUserHandler = (enteredUser) => {
@@ -24,7 +24,7 @@ function App() {
       id: Math.random().toString(),
     };
     setUsers((prevUsers) => {
-      return [enteredUser, ...prevUsers];
+      return [userData, ...prevUsers];
     });
   };
 
@@ -35,7 +35,7 @@ function App() {
         onInvalidData={handleShowInvalidModal}
       />
       <UserList items={users} />
-      {!showInvalidModal && (
+      {showInvalidModal && (
         <InvalidInputModal cancelInvalidModal={cancelShowInvalidModal}/>
       )}
     </div>

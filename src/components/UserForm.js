@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Card from "./Card";
+import Button from "./Button";
 import classes from './UserForm.module.css';
 
 function UserForm(props) {
@@ -32,29 +34,19 @@ function UserForm(props) {
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <div className={classes.form}>
-        <div className={classes['input-group']}>
-          <p>
-            <label>Username</label>
-            <input
-              type="text"
-              value={enteredUsername}
-              onChange={usernameChangeHandler}
-            />
-          </p>
-        </div>
-        <div className={classes['input-group']}>
-          <p>
-            <label>Age</label>
-            <input type="number" value={enteredAge} onChange={ageChangeHandler} />
-          </p>
-        </div>
-        <div className={classes.actions}>
-          <button type="submit">Add User</button>
-        </div>
-      </div>
-    </form>
+    <Card className={classes.input}>
+      <form onSubmit={submitHandler}>
+        <label>Username</label>
+        <input
+          type="text"
+          value={enteredUsername}
+          onChange={usernameChangeHandler}
+        />
+        <label>Age</label>
+        <input type="number" value={enteredAge} onChange={ageChangeHandler} />
+        <Button type="submit">Add User</Button>
+      </form>
+    </Card>
   );
 }
 
